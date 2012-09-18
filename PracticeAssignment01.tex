@@ -1,0 +1,63 @@
+\documentclass[pdftex,quiz,formula]{newcsen}
+
+\Topic{Topic of this assessment}
+\Date{December 21, 2012}
+\Logo{FExtinguish}
+%\Assessmenttype{Practical Assignment}
+\Version{3}
+\Scratchpaper{2}
+
+\begin{document}
+
+\begin{exercise}{5}{Theme}{Name}
+  Test 1: With theme and name, 5 Marks
+  \begin{solution}
+    Pseudo solution. Should appear when option ``solution'' is set.
+  \end{solution}
+\end{exercise}
+
+\begin{figure}[ht]
+  \centering
+  \vspace*{3cm}
+  \caption{Ganz in weiß}
+  \label{fig:test}
+\end{figure}
+
+\begin{exercise}{3}{}{}
+  Test 2: No theme, no name, 3 Marks submarks are added for checking
+  \AddFormula[Formulaname]{Formula with name}
+  \AddFormula{$\sum_{k\leq n}$}
+  \begin{enumerate}
+  \item Part 1\Mark{1}
+%  \item Part 2\Mark{1}
+  \item Part 3\Mark{1}
+  \item Part 4 (Bonus)\Bonus{1}
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{6}{}{}
+  Test 3: No theme, no name, 6 Marks
+\end{exercise}
+
+\begin{exercise}{}{}{}
+  Test 4: No theme, no name, no Marks. Should produce clear output
+  when marking is active
+\end{exercise}
+
+\begin{bonusexercise}{13}{Bonus}{Bonusexercise}
+  Test 5: Bonusexercise with theme and name and 13 marks. Should be
+  indistinguishable from normal exercise if marking is off
+\end{bonusexercise}
+
+\begin{bonusexercise}{}{No}{Marks}
+  Test 6: Bonusexercise with theme and name and no marks. Should be
+  indistinguishable from normal exercise if marking is off, should
+  produce clear warning if marking is active.
+\end{bonusexercise}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
