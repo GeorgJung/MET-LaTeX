@@ -36,4 +36,4 @@ To do:
 - cleanup (consistently prefix variable names and booleans, tighten code)
 - Redo formula sheet (and maybe solutions) by using the answers package
 - nicer subproblem handling
-- provide stratchpaper command to put scratchpaper at other place than last pages
+- provide scratchpaper command to put scratchpaper at other place than last pages
