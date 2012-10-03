@@ -740,15 +740,15 @@
     \includegraphics[height=.8\headheight]{\@logofile}
     \hspace*{1mm}
     \begin{minipage}[b]{.4\linewidth}
-      \small\bfseries\sf \@cseninst\\\@csendpt\\\@csenlecturer
+      \small\bfseries\sf \@csenclass\\\@csentitle\\\@csenedition
     \end{minipage}}
-  {\small\bfseries\sf \@cseninst\\\@csendpt\\\@csenlecturer}}
+  {\small\bfseries\sf \@csenclass\\\@csentitle\\\@csenedition}}
 \chead{}
 \rhead{\ifthenelse{\boolean{logo}}{
     \begin{minipage}[b]{.4\linewidth}
-      \flushright{\small \@csenclass\\\@csentitle\\\@csenedition}
+      \flushright{\small\sf \@cseninst\\\@csendpt\\\@csenlecturer}
     \end{minipage}}
-  {\small \@csenclass\\\@csentitle\\\@csenedition}}
+  {\small\sf \@cseninst\\\@csendpt\\\@csenlecturer}}
 \lfoot{\bfseries \@assessmentform}
 \cfoot{}
 \rfoot{Page \thepage/\pageref{lastpage}}
