@@ -618,7 +618,7 @@
 
 %   Searching and loading of config.tex
 \typeout{[newcsen] Searching 'config.tex'}
-\InputIfFileExists{config.tex}{%
+\InputIfFileExists{./config.tex}{%
   \typeout{[newcsen] File 'config.tex' found in current directory. loading.}}%
 {
   \InputIfFileExists {../config.tex}{%
