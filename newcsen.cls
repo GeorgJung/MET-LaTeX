@@ -113,6 +113,7 @@
 %   \begin{exercise}{<marks>}{<theme>}{<title>} ... \end{exercise}
 %   \begin{bonusexercise}{<marks>}{<theme>}{<title>} ... \end{bonusexercise}
 %   \begin{solution} ... \end{solution}
+%   \begin{unsolved} ... \end{unsolved}
 
 %======================================================================%
 
@@ -587,10 +588,18 @@
 \newenvironment{solution}%
 {\ifthenelse{\boolean{solution}}%
   {\solutionskip\solutionheading}%
-    {\comment}}%
+  {\comment}}%
 {\ifthenelse{\boolean{solution}}%
   {}%
 {\endcomment}}
+
+\newenvironment{unsolved}%
+{\ifthenelse{\boolean{solution}}%
+  {\comment}%
+  {}}%
+{\ifthenelse{\boolean{solution}}%
+  {\endcomment}%
+  {}}
 
 %----------------------------------------------------------------------%
 %   Convenient automatic functions by Igor Akkerman
