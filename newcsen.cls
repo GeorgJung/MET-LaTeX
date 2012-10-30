@@ -621,7 +621,9 @@
     \extractleadingnumber\@string{#2}%
   }%
 }
-\extractnumber{\jobname}{assessment}
+\ifthenelse{\boolean{numbered}}{%
+  \extractnumber{\jobname}{assessment}}{%
+  \setcounter{assessment}{0}}
 \typeout{[newcsen] file name: \jobname}
 \typeout{[newcsen] assessment number: \theassessment}
 
