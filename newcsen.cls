@@ -801,7 +801,9 @@
     \end{minipage}
     \hspace*{\stretch{1}}
     \begin{minipage}[b]{.2\linewidth}
-      \flushright{\@csendate}\\~\\~
+      \flushright{\ifthenelse{\equal{\@csendate}{}}{\typeout{[newcsen]
+            Warning: Date not specified.}{\bfseries\color{red}Define
+            date!}}{\@csendate}}\\~\\~
     \end{minipage}
     \vspace*{3\baselineskip}
     \begin{center}
@@ -839,8 +841,9 @@
       {\LARGE \bfseries \@assessmentform}\\[2mm]
       \ifthenelse{\boolean{subtitle}}{{\Large\@csensubtitle\\[2mm]}}{}
       \ifthenelse{\equal{\@csenversion}{}}{}{{\large ---\ Version\ \@csenversion\ ---\\[2mm]}}
-      {\ifthenelse{\equal{\@csendate}{}}{\ifthenelse{\boolean{marking}}{\bfseries\color{red}
-            Define submission date!\\}{}}{%
+      {\ifthenelse{\equal{\@csendate}{}}{\ifthenelse{\boolean{marking}}{\typeout{[newcsen]
+            Warning: Date not specified.}{\bfseries\color{red}Define
+            submission date!\\}}{}}{%
           \rule{\linewidth}{2pt}
           \raisebox{-.25\baselineskip}{%
             \ifthenelse{\boolean{solution}}{\bfseries Model Solutions}{%
