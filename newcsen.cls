@@ -33,6 +33,9 @@
 
 %     logo       - add a logo to the output
 
+%     formula    - add a formula sheet at the end of the assessment
+%                  (necessary if formulas are referenced!)
+
 %     nomarktbl  - suppress marking table on first page
 %                  (for marked assessments)
 %     noid       - suppress student identification form
@@ -469,11 +472,20 @@
 \newcommand{\Instructions}[1]{\renewcommand{\@cseninstructions}{#1}}
 
 \newcommand{\AddFormula}[2][]{%
-  \ifthenelse{\equal{#1}{}}{%
-    \write\@mainaux{\noexpand\@writefile{for}{%
-        \noexpand\item[$\bullet$]\noexpand~\noexpand\\\noexpand{#2}}}}
-  {\write\@mainaux{\noexpand\@writefile{for}{%
-        \noexpand\item[#1]\noexpand~\noexpand\\\noexpand{#2}}}}}
+  \ifthenelse{\boolean{formula}}{%
+    \ifthenelse{\equal{#1}{}}{%
+      \write\@mainaux{\noexpand\@writefile{for}{%
+          \noexpand\item[$\bullet$]\noexpand~\noexpand\\\detokenize{#2}}}}
+    {\write\@mainaux{\noexpand\@writefile{for}{%
+          \noexpand\item[#1]\noexpand~\noexpand\\\detokenize{#2}}}}
+    \ifthenelse{\boolean{formula}}{}{%
+      \typeout{[newcsen] Warning: Formulas specified but formula sheet
+        not attached. Use option "formula"}}}{%
+    \typeout{[newcsen] Warning: Formulas specified but formula sheet
+      not attached. Use option "formula"}
+    \ifthenelse{\equal{#1}{}}{}{%
+      \textbf{#1.}} #2}}
+
 
 %----------------------------------------------------------------------%
 %   Environments
@@ -703,8 +715,9 @@
     \rule{\linewidth}{1pt}
   \end{center}
   \begin{description}
-    \item[\large Formulas:]~
+    %\item[\large Formulas:]~
     \@starttoc{for}
+    \item[~] ~
   \end{description}}
 
 %----------------------------------------------------------------------%
