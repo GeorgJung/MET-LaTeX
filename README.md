@@ -34,6 +34,7 @@ Implemented so far:
 To do:
 - testing
 - cleanup (consistently prefix variable names and booleans, tighten code)
-- Redo formula sheet (and maybe solutions) by using the environ package (possible loss of backward compatibility!)
+- Redo formula sheet (and maybe solutions) by using the environ package with \detokenize{\BODY} (possible loss of backward compatibility!)
+  (check http://tex.stackexchange.com/questions/67550/write-content-of-box-to-a-file)
 - nicer subproblem handling
 - provide scratchpaper command to put scratchpaper at other place than last pages
