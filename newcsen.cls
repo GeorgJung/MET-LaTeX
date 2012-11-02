@@ -471,21 +471,6 @@
   \end{enumerate}}
 \newcommand{\Instructions}[1]{\renewcommand{\@cseninstructions}{#1}}
 
-\newcommand{\AddFormula}[2][]{%
-  \ifthenelse{\boolean{formula}}{%
-    \ifthenelse{\equal{#1}{}}{%
-      \write\@mainaux{\noexpand\@writefile{for}{%
-          \noexpand\item[$\bullet$]\noexpand~\noexpand\\\detokenize{#2}}}}
-    {\write\@mainaux{\noexpand\@writefile{for}{%
-          \noexpand\item[#1]\noexpand~\noexpand\\\detokenize{#2}}}}
-    \ifthenelse{\boolean{formula}}{}{%
-      \typeout{[newcsen] Warning: Formulas specified but formula sheet
-        not attached. Use option "formula"}}}{%
-    \typeout{[newcsen] Warning: Formulas specified but formula sheet
-      not attached. Use option "formula"}
-    \ifthenelse{\equal{#1}{}}{}{%
-      \textbf{#1.}} #2}}
-
 
 %----------------------------------------------------------------------%
 %   Environments
@@ -613,6 +598,7 @@
   {\endcomment}%
   {}}
 
+
 %----------------------------------------------------------------------%
 %   Convenient automatic functions by Igor Akkerman
 
@@ -704,6 +690,24 @@
 %----------------------------------------------------------------------%
 %   Formula sheet
 
+%   TODO: Formulas should be inside an environment rather than a
+%         command. Use \detokenize\BODY with the environ package to
+%         implement such a solution.
+
+\newcommand{\AddFormula}[2][]{%
+  \ifthenelse{\boolean{formula}}{%
+    \ifthenelse{\equal{#1}{}}{%
+      \write\@mainaux{\noexpand\@writefile{for}{%
+          \detokenize{\item[\lbrack\@exerciselabel\rbrack]~\\#2}}}}
+    {\write\@mainaux{\noexpand\@writefile{for}{%
+          \detokenize{\item[#1]~\\#2}}}}
+    \ifthenelse{\boolean{formula}}{}{%
+      \typeout{[newcsen] Warning: Formulas specified but formula sheet
+        not attached. Use option "formula"}}}{%
+    \typeout{[newcsen] Warning: Formulas specified but formula sheet
+      not attached. Use option "formula"}
+    \textbf{\ifthenelse{\equal{#1}{}}{Formulas.}{#1.}} #2}}
+
 \newcommand{\@mkformula}%
 {\newpage%
   \thispagestyle{formula}
@@ -715,7 +719,6 @@
     \rule{\linewidth}{1pt}
   \end{center}
   \begin{description}
-    %\item[\large Formulas:]~
     \@starttoc{for}
     \item[~] ~
   \end{description}}
