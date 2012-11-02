@@ -471,7 +471,6 @@
   \end{enumerate}}
 \newcommand{\Instructions}[1]{\renewcommand{\@cseninstructions}{#1}}
 
-
 %----------------------------------------------------------------------%
 %   Environments
 
@@ -597,7 +596,6 @@
 {\ifthenelse{\boolean{solution}}%
   {\endcomment}%
   {}}
-
 
 %----------------------------------------------------------------------%
 %   Convenient automatic functions by Igor Akkerman
@@ -755,7 +753,6 @@
         {\small\textbf{Barcode}}
       \end{flushright}
     \end{minipage}}}
-
 
 %----------------------------------------------------------------------%
 %   Layout and headings
