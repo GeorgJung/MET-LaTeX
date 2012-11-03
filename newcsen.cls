@@ -692,11 +692,14 @@
 %         command. Use \detokenize\BODY with the environ package to
 %         implement such a solution.
 
+%   Bug: Formulas without title will print the label of the last, not
+%        of the current exercise!
+
 \newcommand{\AddFormula}[2][]{%
   \ifthenelse{\boolean{formula}}{%
     \ifthenelse{\equal{#1}{}}{%
       \write\@mainaux{\noexpand\@writefile{for}{%
-          \detokenize{\item[\lbrack\@exerciselabel\rbrack]~\\#2}}}}
+          \expandafter\detokenize{\item[\lbrack\@exerciselabel\rbrack]~\\#2}}}}
     {\write\@mainaux{\noexpand\@writefile{for}{%
           \detokenize{\item[#1]~\\#2}}}}
     \ifthenelse{\boolean{formula}}{}{%
@@ -704,7 +707,7 @@
         not attached. Use option "formula"}}}{%
     \typeout{[newcsen] Warning: Formulas specified but formula sheet
       not attached. Use option "formula"}
-    \textbf{\ifthenelse{\equal{#1}{}}{Formulas.}{#1.}} #2}}
+    \textbf{\ifthenelse{\equal{#1}{}}{Formulas.}{#1.}}\\[\@exerciseheadskip]#2}}
 
 \newcommand{\@mkformula}%
 {\newpage%
