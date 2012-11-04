@@ -695,13 +695,14 @@
 %   Bug: Formulas without title will print the label of the last, not
 %        of the current exercise!
 
+\newcommand{\@csenwriteoutformula}[2]{\write\@mainaux{\noexpand\@writefile{for}{%
+      \detokenize{\item[#1]~\\#2}}}}
+
 \newcommand{\AddFormula}[2][]{%
   \ifthenelse{\boolean{formula}}{%
     \ifthenelse{\equal{#1}{}}{%
-      \write\@mainaux{\noexpand\@writefile{for}{%
-          \expandafter\detokenize{\item[\lbrack\@exerciselabel\rbrack]~\\#2}}}}
-    {\write\@mainaux{\noexpand\@writefile{for}{%
-          \detokenize{\item[#1]~\\#2}}}}
+      \@csenwriteoutformula{\lbrack\@exerciselabel\rbrack}{#2}}{%
+      \@csenwriteoutformula{#1}{#2}}
     \ifthenelse{\boolean{formula}}{}{%
       \typeout{[newcsen] Warning: Formulas specified but formula sheet
         not attached. Use option "formula"}}}{%
