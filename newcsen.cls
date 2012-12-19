@@ -117,6 +117,7 @@
 %   \begin{bonusexercise}{<marks>}{<theme>}{<title>} ... \end{bonusexercise}
 %   \begin{solution} ... \end{solution}
 %   \begin{unsolved} ... \end{unsolved}
+%   \begin{mcq} ... \end{mcq}
 
 %======================================================================%
 
@@ -132,6 +133,7 @@
 \RequirePackage{color}
 \RequirePackage{fancyhdr}
 \RequirePackage{colortbl}
+\RequirePackage{amssymb}
 
 %----------------------------------------------------------------------%
 \makeatletter
@@ -596,6 +598,12 @@
 {\ifthenelse{\boolean{solution}}%
   {\endcomment}%
   {}}
+
+\newcommand{\checkedItem}{\item[\ifthenelse{\boolean{solution}}{$\checkmark\hspace*{-1em}\square$}{$\square$}]}%
+\newenvironment{mcq}%
+{\renewcommand{\labelitemi}{$\square$}%
+  \begin{itemize}}
+{\end{itemize}}
 
 %----------------------------------------------------------------------%
 %   Convenient automatic functions by Igor Akkerman
