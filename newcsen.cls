@@ -98,6 +98,9 @@
 %                        correct, but no automatic adding)
 %   \Bonus{}           - same as \Mark{}, but sets boldfont mark which
 %                        is not counted (bonus mark)
+%   \checkedItem       - used instead of \item for correct answers in
+%                        mcq-environment (checkmark appears when
+%                        solution is active
 
 %----------------------------------------------------------------------%
 %   Commands for unofficial use only
@@ -117,7 +120,7 @@
 %   \begin{bonusexercise}{<marks>}{<theme>}{<title>} ... \end{bonusexercise}
 %   \begin{solution} ... \end{solution}
 %   \begin{unsolved} ... \end{unsolved}
-%   \begin{mcq} ... \end{mcq}
+%   \begin{mcq} \item ... \checkedItem ... \end{mcq}
 
 %======================================================================%
 
