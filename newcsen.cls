@@ -90,6 +90,10 @@
 %                        makeup)
 %   \Instructions{}    - sets instructions other than the default for
 %                        this exam
+%   \Management{}      - adds content of braces to front/cover-page to
+%                        include extra administrative information
+%                        (e.g., for distinguishing majors or type of
+%                        final / mid-final / second makeup)
 %   \AddFormula[]{}    - adds a formula for the formula sheet
 %                        (optional title)
 %   \SolutionSpace{}   - sets a space to be left for the solution if
@@ -166,6 +170,7 @@
 \newboolean{nomarktbl}%    - Suppresses the marking table if true
 \newboolean{nobarcode}%    - Suppress printing of a barcode placeholder
 \newboolean{noinstruct}%   - Suppress printing of instructions on cover page
+\newboolean{management}%   - Add administrative content to front/cover-page
 \newboolean{formula}%      - Assessment contains a formula sheet
 
 %----------------------------------------------------------------------%
@@ -221,6 +226,7 @@
 \setboolean{marking}{false}%
 \setboolean{nobarcode}{false}%
 \setboolean{noinstruct}{false}%
+\setboolean{management}{false}%
 \setboolean{formula}{false}%
 
 \DeclareOption{practice}{\setboolean{practice}{true}%
@@ -453,16 +459,16 @@
       \ifthenelse{\boolean{formula}}{A fomula sheet is attached and
         may be detached for convenience
         (page~\pageref{formulapage}). }{}}{%
-        \ifthenelse{\value{scratchpages}>0}{\ifthenelse{\boolean{marking}}{\@scratchspelled\
-            extra sheets of scratch paper are attached and have to be
-            kept attached. }{}}{}%
-        \ifthenelse{\boolean{formula}}{A fomula sheet is attached and
-          may be detached for convenience
-          (page~\pageref{formulapage}). The formula sheet does not
-          need to be submitted. }{}%
-        \textbf{Note that if one or more pages are missing, you will
-          lose their points. Thus, you must check that your exam
-          booklet is complete.}
+      \ifthenelse{\value{scratchpages}>0}{\ifthenelse{\boolean{marking}}{\@scratchspelled\
+          extra sheets of scratch paper are attached and have to be
+          kept attached. }{}}{}%
+      \ifthenelse{\boolean{formula}}{A fomula sheet is attached and
+        may be detached for convenience
+        (page~\pageref{formulapage}). The formula sheet does not need
+        to be submitted. }{}%
+      \textbf{Note that if one or more pages are missing, you will
+        lose their points. Thus, you must check whether your exam
+        booklet is complete.}
     \item Write your solutions in the space provided. If you need more
       space, write on the back of the sheet containing the
       problem\ifthenelse{\value{scratchpages}>0}{\ifthenelse{\boolean{marking}}{
@@ -475,6 +481,11 @@
       test.}%
   \end{enumerate}}
 \newcommand{\Instructions}[1]{\renewcommand{\@cseninstructions}{#1}}
+
+\newcommand{\@csenmanagement}{}
+\newcommand{\Management}[1]{%
+  \setboolean{management}{true}%
+  \renewcommand{\@csenmanagement}{#1}}
 
 %----------------------------------------------------------------------%
 %   Environments
@@ -822,6 +833,7 @@
 
 \AtBeginDocument{%
   \ifthenelse{\boolean{cover}}{%
+    \newgeometry{left=15mm, right=15mm, top=10mm, bottom=10mm, headheight=0pt, includefoot}
     \thispagestyle{plain}
     \noindent
     \ifthenelse{\boolean{logo}}{%
@@ -853,6 +865,8 @@
       \ifthenelse{\boolean{mock}}{\textbf{Typical regulations of an exam like this:}}%
       {\textbf{Instructions. Please read carefully before proceeding.}}
       \@cseninstructions}
+    \ifthenelse{\boolean{management}}{%
+      \@csenmanagement}{}
     \begin{center}
       \ifthenelse{\boolean{mock} \OR \boolean{solution}}{}{
         \textbf{\large Good luck!}}
@@ -864,6 +878,7 @@
     \begin{center}
       \@csenmarktable
     \end{center}}}{}
+    \restoregeometry
     \pagebreak
   }{%
     \noindent
@@ -882,6 +897,9 @@
           \rule{\linewidth}{2pt}}}
     \end{center}
     \ifthenelse{\boolean{identity}}{\@csenidentity}{}
+    \ifthenelse{\boolean{management}}{\vspace*{1cm}
+
+      \@csenmanagement}{}
     \ifthenelse{\boolean{marking}}{\ifthenelse{\boolean{nomarktbl}}{}{
         \vspace*{2cm}
         \begin{center}
