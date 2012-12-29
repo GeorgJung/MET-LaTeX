@@ -873,7 +873,7 @@
     \end{center}
     \vspace*{\stretch{1}}
     \ifthenelse{\boolean{marking}}{\ifthenelse{\boolean{nomarktbl}}{}{
-    \rule{\linewidth}{3pt}\\
+    \rule{\linewidth}{3pt}
     Do not write anything below this line.
     \begin{center}
       \@csenmarktable
