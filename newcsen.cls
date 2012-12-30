@@ -696,7 +696,7 @@
   \begin{tabular}{| >{\columncolor[gray]{0.9}}r | *{\value{marktableexercise}}{c |}| c |}
     \hline
     \rowcolor[gray]{0.9}\@exercisename
-    \multido{\i=1+1}{\value{marktableexercise}}{\eaddto\numbersrow{&\i}}\numbersrow & $\mathbf{\Sigma}$ \\
+    \multido{\i=1+1}{\value{marktableexercise}}{\eaddto\numbersrow{&\i}}\numbersrow & $\Sigma$ \\
     \hline
     \rowcolor[gray]{0.9}Possible marks & \marksrow \textbf{\arabic{csenmarktotal}} \\
     \hline
