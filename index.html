@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MET LaTeX by GeorgJung</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">MET LaTeX</h1>
+        <p class="header">LaTeX Style for exams, assignments, quizzes, etc., at the faculty for Media Engineering and Technology (MET) at the German University in Cairo (GUC)</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/GeorgJung/MET-LaTeX/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/GeorgJung/MET-LaTeX/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/GeorgJung/MET-LaTeX">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/GeorgJung">GeorgJung</a></p>
+
+
+      </header>
+      <section>
+        <h1>The German University in Cairo - GUC</h1>
+
+<p><a href="www.guc.edu.eg">www.guc.edu.eg</a></p>
+
+<h2>Faculty for Media Engineering and Technology - MET</h2>
+
+<p><a href="met.guc.edu.eg">met.guc.edu.eg</a></p>
+
+<h3>LaTeX templates for coursework documents</h3>
+
+<ul>
+<li>Repository started on August 25th, 2011</li>
+<li>Repository restarted on September 18th, 2012</li>
+</ul><h3>Usage</h3>
+
+<ul>
+<li>Install a fairly complete version of TeX/LaTeX, able to run <code>pdflatex</code>.</li>
+<li>Copy <code>newcsen.cls</code> (and optionally <code>GUC-logo.pdf</code>) to a place where LaTeX can find it.</li>
+<li>
+<p>Set up a <code>config.tex</code> file for the class you teach. It should be stored in a central place where LaTeX can find it or inside a directory that contains the other LaTeX sources for a specific course.</p>
+
+<p>The individual LaTeX-files for your assessments can be in subdirectories of the one containing <code>config.tex</code> (up to two levels).</p>
+</li>
+<li><p>Write your assessments, with <code>newcsen</code> as document style and the respective options (see below).</p></li>
+</ul><h3>Documantation</h3>
+
+<p><strong>Files</strong></p>
+
+<ul>
+<li>
+<code>newcsen.cls</code> - New class file to compile course documents.</li>
+<li>
+<code>config.tex</code> - Example configuration file to test the class.</li>
+<li>
+<code>PracticeAssignment01.tex</code> - Example assessment file to test the class.</li>
+<li>
+<code>GUC-logo.pdf</code> - PDF vectorized version of the GUC logo (gets loaded with option "logo" unless other file is specified).</li>
+<li>
+<code>GUC-logo-stripped.pdf</code> - Another version of the GUC logo, can be specified individually.</li>
+<li>
+<code>FExtinguish.pdf</code> - Another logo to test the scaling. Use your own course logo, if you like.</li>
+</ul><p><strong>Implemented so far:</strong></p>
+
+<ul>
+<li>Automatic result table</li>
+<li>Automatic search for global config file in current and parent and parent of parent directory</li>
+<li>Automatic setting of image search path according to location of config file</li>
+<li>options: see below.</li>
+<li>commands: <code>\Institute{}</code> <code>\Department{}</code> <code>\Class{}</code> <code>\Title{}</code> <code>\Lecturer[]{}</code> <code>\Email{}</code> <code>\Logo{}</code> <code>\Topic{}</code> <code>\Date{}</code> and many more...</li>
+<li>exercise environment</li>
+<li>bonus-exercise environment</li>
+<li>options practice (default) and assignment usable now</li>
+<li>scratch paper generator</li>
+<li>cover pages</li>
+<li>spacing</li>
+</ul><p><em>To do</em>:</p>
+
+<ul>
+<li>testing</li>
+<li>cleanup (consistently prefix variable names and booleans, tighten code)</li>
+<li>Redo formula sheet (and maybe solutions) by using the environ package with <code>\detokenize{\BODY}</code> (possible loss of backward compatibility!)
+(check <a href="StackExchange">http://tex.stackexchange.com/questions/67550/write-content-of-box-to-a-file</a>)</li>
+<li>nicer subproblem handling</li>
+<li>provide <code>scratchpaper</code> command to put scratch paper at other place than last pages</li>
+</ul><p><strong>Document class options:</strong></p>
+
+<p><em>General</em></p>
+
+<ul>
+<li>
+<code>solution</code> - show solution</li>
+</ul><p><em>Type</em></p>
+
+<ul>
+<li>
+<code>practice</code> - compile a practice assignment</li>
+<li>
+<code>assignment</code> - compile an assignment</li>
+<li>
+<code>popquiz</code> - compile a popquiz</li>
+<li>
+<code>quiz</code> - compile a quiz</li>
+<li>
+<code>mock</code> - compile a mock exam</li>
+<li>
+<code>midterm</code> - compile the midterm exam</li>
+<li>
+<code>final</code> - compile the final exam</li>
+<li>
+<code>makeup</code> - compile the makeup exam</li>
+</ul><p><em>Logo?</em></p>
+
+<ul>
+<li>
+<code>logo</code> - add a logo to the output</li>
+</ul><p><em>Formula sheets</em></p>
+
+<ul>
+<li>
+<code>formula</code> - add a formula sheet at the end of the assessment (necessary if formulas are referenced!)</li>
+</ul><p><em>Details</em></p>
+
+<ul>
+<li>
+<code>nomarktbl</code> - suppress marking table on first page (for marked assessments)</li>
+<li>
+<code>noid</code> - suppress student identification form (e.g., for computerized assessments)</li>
+<li>
+<code>nobarcode</code> - suppress barcode placeholder (e.g., for computerized assessments)</li>
+<li>
+<code>idform</code> - print student id-form on cover page instead of barcode</li>
+<li>
+<code>nonumber</code> - suppress numbering</li>
+<li>
+<code>coverpage</code> - generate a cover page (default for quiz, mock exam, midterm, final, and makeup)</li>
+<li>
+<code>nocover</code> - do not generate a cover page (default for practice assignment, assignment, popquiz)</li>
+<li>
+<code>noinstruct</code> - suppress instructions on cover page</li>
+</ul><p><strong>Commands for config.tex</strong></p>
+
+<ul>
+<li>
+<code>\Institute{}</code> - sets the institute (defaults to "The German University in Cairo")</li>
+<li>
+<code>\Department{}</code> - sets the department (defaults to "Dpt. for Media Engineering and Technology")</li>
+<li>
+<code>\Class{}</code> - sets the class code</li>
+<li>
+<code>\Title{}</code> - sets the title of the class</li>
+<li>
+<code>\Edition{}</code> - sets the semester for this class</li>
+<li>
+<code>\Lecturer[]{}</code> - sets the class lecturer (optional short name)</li>
+<li>
+<code>\Email{}</code> - sets the e-mail address of the lecturer</li>
+<li>
+<code>\Logo{}</code> - sets the base name of an image file that contains a logo (defaults to "GUC-logo")</li>
+</ul><p><strong>Commands for individual files</strong></p>
+
+<ul>
+<li>
+<code>\Assessmenttype{}</code> - sets an individual assessment type if necessary (e.g., "Practical Assignment", usually set through appropriate option)</li>
+<li>
+<code>\Number{}</code> - sets the number of this assessment (usually set automatically from filename, e.g., use "<code>PracticeAssigment02.c.tex</code>" for practice assignment 2, version 3)</li>
+<li>
+<code>\Topic{}</code> - sets the topic of the exercise set</li>
+<li>
+<code>\Version{}</code> - sets the version number, necessary if multiple versions are prepared (not set automatically!)</li>
+<li>
+<code>\Date{}</code> - sets the discussion or submission or exam date</li>
+<li>
+<code>\Pages</code> - returns the total number of pages</li>
+<li>
+<code>\Scratchpaper{}</code> - sets the number of pages for jotting paper in the end (defaults to three for marked exam types, zero otherwise)</li>
+<li>
+<code>\Scratchpages</code> - returns the number of pages for jotting paper in the end</li>
+<li>
+<code>\Duration{}</code> - sets the duration of the exam (defaults to 120 min for midterm and 180 min for final and makeup)</li>
+<li>
+<code>\Instructions{}</code> - sets instructions other than the default for this exam</li>
+<li>
+<code>\Management{}</code> - adds content of braces to front/cover-page to include extra administrative information (_e.g._, for distinguishing majors or type of the exam such as final, mid-final, or second makeup)</li>
+<li>
+<code>\AddFormula[]{}</code> - adds a formula for the formula sheet (optional title, should be set with the current version due to a bug)</li>
+<li>
+<code>\SolutionSpace{}</code> - sets a space to be left for the solution if the solution is not shown</li>
+<li>
+<code>\Mark{}</code> - set marks for sub-exercises (checks if sum is correct, but no automatic adding)</li>
+<li>
+<code>\Bonus{}</code> - same as <code>\Mark{}</code>, but sets <strong>bold font</strong> mark which is not counted (bonus mark)</li>
+<li>
+<code>\checkedItem</code> - used instead of <code>\item</code> for correct answers in <code>mcq</code>-environment (check-mark appears when <code>solution</code> option is set</li>
+</ul><p><strong>Commands for unofficial use only</strong></p>
+
+<ul>
+<li>
+<code>\Exercisename{}</code> - Sets a name for the exercise header (default: Exercise)</li>
+<li>
+<code>\Bonusname{}</code> - Sets a name for the bonus exercise header (default: Bonus Exercise)</li>
+<li>
+<code>\Exerciseheadskip{}</code> - Sets a distance between number, theme and title</li>
+<li>
+<code>\Exerciseskip{}</code> - Sets the distance between two exercises</li>
+</ul><p><strong>Environments</strong></p>
+
+<p><code>\begin{exercise}{</code> <em>marks</em> <code>}{</code> <em>theme</em> <code>}{</code> <em>title</em> <code>}</code> ... <code>\end{exercise}</code></p>
+
+<p>Standard exercise environment.</p>
+
+<p><code>\begin{bonusexercise}{</code> <em>marks</em> <code>}{</code> <em>theme</em> <code>}{</code> <em>title</em> <code>}</code> ... <code>\end{bonusexercise}</code></p>
+
+<p>Environment for bonus exercises (not counted into the marking table)</p>
+
+<p><code>\begin{solution}</code> ... <code>\end{solution}</code></p>
+
+<p>Solutions</p>
+
+<p><code>\begin{unsolved}</code> ... <code>\end{unsolved}</code></p>
+
+<p>Material that should disappear when solutions are given</p>
+
+<p><code>\begin{mcq}</code> ... <code>\end{mcq}</code></p>
+
+<p>Environment for multiple-choice questions. Use <code>\item</code> for the individual answers, use <code>\checkedItem</code> for individual answers that should appear check-marked in the solution.</p>
+
+<h1>Notes</h1>
+
+<p>I am experienced with using LaTeX, but I am not experienced with style authoring. Some commands should be environments and vice versa, various improvements can be made. However, the style has proven very useful to me. Use (and improve) as you see fit.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
