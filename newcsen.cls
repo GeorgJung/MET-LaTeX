@@ -469,8 +469,8 @@
       \textbf{Note that if one or more pages are missing, you will
         lose their points. Thus, you must check whether your exam
         booklet is complete.}
-    \item Write your solutions in the space provided. If you need more
-      space, write on the back of the sheet containing the
+    \item Write your solutions into the space provided. If you need
+      more space, write on the back of the sheet containing the
       problem\ifthenelse{\value{scratchpages}>0}{\ifthenelse{\boolean{marking}}{
           or on the \@scratchspelled[l]\ extra sheets and indicate
           that clearly on the problem page. \textbf{Scratch sheets
