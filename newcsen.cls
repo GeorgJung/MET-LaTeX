@@ -616,6 +616,9 @@
 \newcommand{\checkedItem}{\item[\ifthenelse{\boolean{solution}}{$\checkmark\hspace*{-1em}\square$}{$\square$}]}%
 \newenvironment{mcq}%
 {\renewcommand{\labelitemi}{$\square$}%
+  \renewcommand{\labelitemii}{$\square$}%
+  \renewcommand{\labelitemiii}{$\square$}%
+  \renewcommand{\labelitemiv}{$\square$}%
   \begin{itemize}}
 {\end{itemize}}
 
