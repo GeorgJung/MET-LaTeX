@@ -388,7 +388,7 @@
   \ifthenelse{\boolean{numbered}}{--}{}\arabic{exercise}}%
 
 \newcommand{\@cseninst}{The German University in Cairo}
-\newcommand{\Institute}[1]{\renewcommand{\@csendpt}{#1}}
+\newcommand{\Institute}[1]{\renewcommand{\@cseninst}{#1}}
 
 \newcommand{\@csendpt}{Dpt.\ for Media Engineering and Technology}
 \newcommand{\Department}[1]{\renewcommand{\@csendpt}{#1}}
