@@ -524,13 +524,13 @@
     \ifthenelse{\equal{#1}{}}%
     {}%
     {\ifthenelse{\equal{#1}{1}}%
-      {(1~Mark)}%
-      {(#1~Marks)}}}{}}%
+      {1~Mark}%
+      {#1~Marks}}}{}}%
 
 \renewcommand{\labelenumi}{(\alph{enumi})}
 
-\newcommand{\Mark}[1]{\addtocounter{csensubmarktotal}{#1}\hspace*{\stretch{1}}{\@exercisemarks{#1}}}
-\newcommand{\Bonus}[1]{\addtocounter{csensubbonustotal}{#1}\hspace*{\stretch{1}}{\textbf{\@exercisemarks{#1}}}}
+\newcommand{\Mark}[1]{\addtocounter{csensubmarktotal}{#1}\hspace*{\stretch{1}}{(\@exercisemarks{#1})}}
+\newcommand{\Bonus}[1]{\addtocounter{csensubbonustotal}{#1}\hspace*{\stretch{1}}{\textbf{(\@exercisemarks{#1})}}}
 
 \newcommand{\@exercisetheme}[1]{%
   \ifthenelse{\equal{#1}{}}%
